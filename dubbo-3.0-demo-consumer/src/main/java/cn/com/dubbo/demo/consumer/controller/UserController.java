@@ -1,6 +1,7 @@
 package cn.com.dubbo.demo.consumer.controller;
 
 import cn.com.dubbo.demo.provider.dto.UserDto;
+import cn.com.dubbo.demo.provider.service.MyEmpService;
 import cn.com.dubbo.demo.provider.service.UserService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @DubboReference(version = "0.0.1", timeout = 6000)
     private UserService userService;
+    @DubboReference
+    private MyEmpService myEmpService;
 
     @GetMapping(value = "/user/{userId}")
     public UserDto getUser(@PathVariable("userId") Integer userId) {
-       return userService.getUser(userId);
+        return userService.getUser(userId);
+    }
+
+    @GetMapping(value = "/emp/{empCode}")
+    public Object getEmp(@PathVariable("empCode") String empCode) throws Exception {
+        return myEmpService.getEmpInfo(empCode);
     }
 }

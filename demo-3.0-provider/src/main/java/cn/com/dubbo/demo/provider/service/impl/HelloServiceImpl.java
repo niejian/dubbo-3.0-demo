@@ -9,7 +9,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @description:
  * @create 2021-08-30 11:47
  */
-//@DubboService
+@DubboService
 public class HelloServiceImpl implements HelloService {
     @Override
     public String hello(String name) {

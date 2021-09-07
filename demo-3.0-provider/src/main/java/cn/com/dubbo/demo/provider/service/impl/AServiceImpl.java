@@ -9,7 +9,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @description:
  * @create 2021-08-30 14:04
  */
-//@DubboService
+@DubboService
 public class AServiceImpl implements AService {
     @Override
     public String A() {
